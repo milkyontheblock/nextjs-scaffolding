@@ -61,7 +61,7 @@ export default function Page() {
         </div>
         <div className="hidden bg-muted lg:block relative">
           <Image
-            src="/img/giftbag.png"
+            src="/img/banner.png"
             alt="Image"
             fill
             className="h-full w-full object-cover object-center dark:brightness-[0.2] dark:grayscale"
