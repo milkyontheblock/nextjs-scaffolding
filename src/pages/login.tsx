@@ -6,8 +6,25 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { defaultMetadata } from "@/lib/utils"
+import { useState } from "react"
 
 export default function Page() {
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+
+  const handleSubmitButtonClick = async () => {
+    const res = await fetch('/api/auth/signin', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        usernameOrEmail: email,
+        password
+      })
+    })
+  }
+
   return (
     <Layout meta={{
       ...defaultMetadata, 
@@ -28,6 +45,8 @@ export default function Page() {
                 <Input
                   id="email"
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="m@example.com"
                   required
                 />
@@ -42,9 +61,15 @@ export default function Page() {
                     Forgot your password?
                   </Link>
                 </div>
-                <Input id="password" type="password" required />
+                <Input 
+                  id="password" 
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" onClick={handleSubmitButtonClick}>
                 Login
               </Button>
               <Button variant="outline" className="w-full">
