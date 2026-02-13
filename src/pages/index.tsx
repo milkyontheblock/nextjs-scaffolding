@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <Layout meta={defaultMetadata}>
       <div className="min-h-screen w-full flex items-center justify-center">
-        <p>Time to build something sexy, I think?</p>
+        <p>Time to build something sexy, I think? Monorepo rules</p>
       </div>
     </Layout>
   )
